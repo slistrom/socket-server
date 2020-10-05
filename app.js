@@ -10,7 +10,8 @@ io.on('connection', function (socket) {
     console.info("User connected");
 
     socket.on('chat message', function (message) {
-        io.emit('chat message', message);
+        const timestamp = new Date().toLocaleTimeString();
+        io.emit('chat message', timestamp + " - " + message);
     });
 });
 
