@@ -1,14 +1,17 @@
 // MongoDB
 const mongo = require("mongodb").MongoClient;
-const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/chatlog";
+const dsn =  "mongodb://localhost:27017/chatlog";
 
 // Express
 const express = require('express');
 const app = express();
 const port = 8000;
+const bodyParser = require('body-parser');
 
 const cors = require('cors');
+
 app.use(cors());
+app.use(bodyParser.json());
 
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
